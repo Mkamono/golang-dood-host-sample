@@ -10,3 +10,5 @@ services:
     volumes:
       - .:/go/src/app
       - /var/run/docker.sock:/var/run/docker.sock
+      # - ./env/.ssh:/root/.ssh
+      # ssh でgitなどをしたい場合設定を置くと良い

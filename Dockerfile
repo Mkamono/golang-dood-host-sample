@@ -22,4 +22,6 @@ RUN echo \
 
 RUN apt update
 
-RUN apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+RUN apt install docker-ce docker-ce-cli containerd.io -y
+RUN curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+RUN chmod +x /usr/local/bin/docker-compose
