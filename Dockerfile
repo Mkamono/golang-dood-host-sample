@@ -2,10 +2,16 @@ FROM golang:1.19
 
 WORKDIR /go/src/work
 
-RUN go install -v golang.org/x/tools/gopls@latest
-RUN go install -v github.com/ramya-rao-a/go-outline@latest
-RUN go install -v github.com/go-delve/delve/cmd/dlv@latest
-RUN go install -v honnef.co/go/tools/cmd/staticcheck@latest
+RUN go install -v golang.org/x/tools/gopls@latest 
+RUN go install -v github.com/ramya-rao-a/go-outline@latest 
+RUN go install -v github.com/go-delve/delve/cmd/dlv@latest 
+RUN go install -v honnef.co/go/tools/cmd/staticcheck@latest 
+RUN go install -v github.com/cweill/gotests/gotests@latest 
+RUN go install -v github.com/fatih/gomodifytags@latest 
+RUN go install -v github.com/josharian/impl@latest 
+RUN go install -v github.com/haya14busa/goplay/cmd/goplay@latest
+RUN go install -v github.com/davidrjenni/reftools/cmd/fillstruct@latest
+
 RUN apt update
 RUN apt install -y \
     apt-transport-https \
@@ -21,7 +27,6 @@ RUN echo \
   $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 RUN apt update
-RUN go mod download
 
 RUN apt install docker-ce docker-ce-cli containerd.io -y
 RUN curl -SL https://github.com/docker/compose/releases/download/v2.6.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
